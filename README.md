@@ -1,5 +1,5 @@
-# ETF-SPY-Analysis
-Track the SPY ETF for the S&amp;P 500 for further analysis.
+# Unemployment-Rate-Analysis
+Analysis of the unemployment rate in the world for the period 1991-2025.
 
 ```bash
 python3.12 -m venv venv

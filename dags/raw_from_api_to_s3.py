@@ -88,7 +88,7 @@ def get_and_transfer_api_data_to_s3(**context):
     # Построить URL для Alpha Vantage API
     api_url = (
         f"https://www.alphavantage.co/query"
-        f"?function=TIME_SERIES_DAILY_ADJUSTED"
+        f"?function=TIME_SERIES_DAILY"
         f"&symbol={SYMBOL}"
         f"&outputsize={OUTPUT_SIZE}"
         f"&apikey={ALPHA_VANTAGE_API_KEY}"
@@ -127,10 +127,7 @@ def get_and_transfer_api_data_to_s3(**context):
                     high,
                     low,
                     close,
-                    adjusted_close,
-                    volume,
-                    dividend_amount,
-                    split_coefficient
+                    volume
                 FROM read_csv_auto('{api_url}')
             ) TO '{s3_path}'
             (FORMAT PARQUET, COMPRESSION GZIP);
