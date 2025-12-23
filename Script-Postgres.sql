@@ -68,7 +68,7 @@ limit 50;
 create unique index if not exists idx_mv_top_countries on dm.mv_top_unemployment_countries(entity, year);
 
 
--- Витрина 2. Динамика по годам для топ-10 стран за последние 10 лет
+-- Витрина 2. Динамика по годам для топ-15 стран за последние 10 лет
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS dm.mv_unemployment_trends AS
 WITH country_stats AS (
@@ -84,7 +84,7 @@ top_countries AS (
         entity
     FROM country_stats
     ORDER BY avg_unemployment_last_5_years DESC
-    LIMIT 10
+    LIMIT 15
 )
 SELECT 
     d.entity,
